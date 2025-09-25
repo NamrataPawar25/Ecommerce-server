@@ -1,10 +1,10 @@
-const product = require("../models/productModel")
+const product = require("../models/productModel");
 
 
 const getAllProducts = async(req, res) => {
     try {
-        const product= await category.findAll()
-        res.status(200).send({product: product, success: true})
+        const products= await product.findAll()
+        res.status(200).send({products: products, success: true})
     } catch (error) {
         res.status(500).send({msg: "server eror"})
     }
@@ -21,9 +21,9 @@ async function createProduct(req, res) {
     try {
         const newProduct= await product.create(req.body)
         if(newProduct){
-        res.status(200).send({msg: "Product created successfully", success: true})
+        res.status(200).send({msg: "product created successfully", success: true})
         }else{
-        res.status(400).send({msg: "Error while creating category", success: false})
+        res.status(400).send({msg: "Error while creating product", success: false})
         }
     } catch (error) {
         res.status(500).send({msg: "server eror"})

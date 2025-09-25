@@ -1,7 +1,12 @@
 const express= require("express")
+const cors = require("cors")
+require("dotenv").config();
+
+
 
 const categoryRoute= require("./routes/categoryRoute")
 const brandRoute= require("./routes/brandRoute")
+const productRoute= require("./routes/productRoute")
 
 
 const app= express()
@@ -14,8 +19,10 @@ app.use(cors())
 
 app.get("/", (req, res) => res.send("Hello World"));
 
-app.use("/api/category", categoryRoute);
-app.use("/api/brand", brandRoute);
+app.use("/category", categoryRoute);
+app.use("/brand", brandRoute);
+app.use("/product", productRoute);
+
 
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

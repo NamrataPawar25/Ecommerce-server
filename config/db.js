@@ -13,4 +13,17 @@ const sequelize = new Sequelize(
   }
 );
 
+sequelize
+.authenticate()
+.then(()=>{
+  console.log("Database Created sucessfully!");
+})
+.catch((err)=>{
+  console.log("Unable to connect to the database: ", err);
+});
+
+sequelize.sync({alter: true})
+.then(()=> console.log("Tables altered successfully"))
+.catch(err=> console.log("Sync error: ", err))
+
 module.exports = sequelize;
